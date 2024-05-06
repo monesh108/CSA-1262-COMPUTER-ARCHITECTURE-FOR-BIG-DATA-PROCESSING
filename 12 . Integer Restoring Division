@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h> 
+void restoringDivision(int dividend, int divisor) {
+    int quotient = 0;
+    bool negative = false;
+    if (divisor == 0) {
+        printf("Error: Division by zero\n");
+        return;
+    }
+    if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) {
+        negative = true;
+        dividend = -dividend;
+        divisor = abs(divisor);
+    } else if ((dividend < 0 && divisor < 0) || (dividend > 0 && divisor > 0)) {
+        negative = false;
+        dividend = abs(dividend);
+        divisor = abs(divisor);
+    }
+    printf("Debug: dividend = %d, divisor = %d\n", dividend, divisor);
+    while (dividend >= divisor) {
+        dividend -= divisor;
+        quotient++;
+        printf("Debug: quotient = %d, remainder = %d\n", quotient, dividend);
+    }
+    if (negative)
+        quotient = -quotient;
+    printf("Quotient: %d\n", quotient);
+    printf("Remainder: %d\n", dividend);
+}
+int main() {
+    int dividend, divisor;
+    printf("Enter dividend: ");
+    scanf("%d", &dividend);
+    printf("Enter divisor: ");
+    scanf("%d", &divisor);
+    restoringDivision(dividend, divisor);
+    return 0;
+}
