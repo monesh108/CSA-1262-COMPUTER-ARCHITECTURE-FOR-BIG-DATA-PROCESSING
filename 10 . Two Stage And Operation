@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main() {
+    int operand1 = 4;
+    int operand2 = 5;
+    int result = operand1 & operand2;
+    printf("Result of AND operation: %d\n", result);
+    
+    return 0;
+}
